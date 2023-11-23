@@ -20,6 +20,13 @@ Route::get(uri: '/',action: function () {
     return view(view:'welcome');
 });
 
-Route::resource(name: 'fakultas', controller: FakultasController::class);
-Route::resource(name: 'prodi', controller: ProdiController::class);
-Route::resource(name: 'mahasiswa', controller: MahasiswaController::class);
+Route::middleware('auth')->group(function() {
+    Route::resource(name: 'fakultas', controller: FakultasController::class);
+    Route::resource(name: 'prodi', controller: ProdiController::class);
+    Route::resource(name: 'mahasiswa', controller: MahasiswaController::class);
+
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
