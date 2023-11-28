@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\fakultas;
+use App\Models\mahasiswa;
+use App\Models\prodi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $fakultas = fakultas::all();
+        $prodi = prodi::all();
+        $mahasiswa = mahasiswa::all();
+        $grafik_mhs = DB::select("SELECT")
+        return view('home')
+        ->with('fakultas', $fakultas)
+        ->with('prodi',$prodi)
+        ->with('mahasiswa',$mahasiswa);
     }
 }
