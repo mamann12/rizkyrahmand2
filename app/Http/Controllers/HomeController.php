@@ -30,10 +30,10 @@ class HomeController extends Controller
         $fakultas = fakultas::all();
         $prodi = prodi::all();
         $mahasiswa = mahasiswa::all();
-        $grafik_mhs = DB::select("SELECT")
+        $grafik_mhs = DB::select("SELECT");
         return view('home')
-        ->with('fakultas', $fakultas)
-        ->with('prodi',$prodi)
-        ->with('mahasiswa',$mahasiswa);
+            ->with('fakultas', $fakultas)
+            ->with('prodi', $prodi)
+            ->with('mahasiswa', $mahasiswa);
     }
 }
